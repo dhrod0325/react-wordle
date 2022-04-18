@@ -1,6 +1,7 @@
 import { Word } from "./Word";
 import { initialWordGrid } from "../constants/SETTING";
 
+//TODO refactor
 export const WordGrid = (initialWords?: Word[]) => {
   let words: Word[] = [];
 
@@ -31,7 +32,7 @@ export const WordGrid = (initialWords?: Word[]) => {
     return newWords;
   };
 
-  const checkWord = (row: number, answer: string) => {
+  const checkWordByRow = (row: number, answer: string) => {
     const newWords = [...words];
     newWords[row] = new Word(words[row].check(new Word(answer)));
     return newWords;
@@ -56,12 +57,12 @@ export const WordGrid = (initialWords?: Word[]) => {
 
   return {
     getLetterByText,
-    setWords,
     removeLetter,
-    checkWord,
+    inputWord,
+    checkWordByRow,
     inputLetter,
     isAnswer,
     words,
-    inputWord,
+    setWords,
   };
 };

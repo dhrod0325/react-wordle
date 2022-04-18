@@ -12,5 +12,6 @@ export class RandomWordGenerator implements WordGenerator {
 
 export function generateRandomAnswer() {
   const generator = new RandomWordGenerator();
-  return generator.generate().toUpperCase();
+  const answer = generator.generate();
+  return answer.toUpperCase();
 }

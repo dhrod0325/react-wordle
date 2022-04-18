@@ -45,7 +45,7 @@ export const useAnswerCheck = () => {
     setCurrentRow(currentRow + 1);
     setCurrentCol(0);
 
-    setWords(wordGrid.checkWord(currentRow, answer));
+    setWords(wordGrid.checkWordByRow(currentRow, answer));
   }
 
   function inputLetter(letter: string) {
