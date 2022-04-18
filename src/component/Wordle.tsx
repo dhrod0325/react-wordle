@@ -22,7 +22,7 @@ export const Wordle = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  });
+  }, [handleKeyDown]);
 
   const wordleAnswerCheck = (text: string) => {
     try {
@@ -40,18 +40,18 @@ export const Wordle = () => {
     }
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  function handleKeyDown(e: KeyboardEvent) {
     wordleAnswerCheck(e.key.toUpperCase());
-  };
+  }
 
-  const handleClickKeyBoardButton = (text: string) => {
+  function handleOnClickKey(text: string) {
     wordleAnswerCheck(text);
-  };
+  }
 
   return (
     <div className={classNames("gameContainer")}>
       <GameBoard />
-      <Keyboard onClickKey={handleClickKeyBoardButton} />
+      <Keyboard onClickKey={handleOnClickKey} />
     </div>
   );
 };
