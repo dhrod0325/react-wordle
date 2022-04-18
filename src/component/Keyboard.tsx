@@ -3,14 +3,11 @@ import { keyboardState } from "../recoil/atoms";
 import classNames from "classnames";
 import { KeyboardButtonType, KeyboardProps } from "../@types";
 
-export const Keyboard = ({ onClickKey }: KeyboardProps) => {
+export const Keyboard = ({ onClick }: KeyboardProps) => {
   const keyboard = useRecoilValue(keyboardState);
 
-  const handleOnClickKey = (key: KeyboardButtonType) => {
-    const { text } = key;
-    return () => {
-      onClickKey(text);
-    };
+  const handleOnClick = (key: KeyboardButtonType) => () => {
+    onClick(key.text);
   };
 
   const KeyButtons = (keyRow: number, keys: KeyboardButtonType[]) => {
@@ -28,7 +25,7 @@ export const Keyboard = ({ onClickKey }: KeyboardProps) => {
       <span
         className={classNames("keyboardButton", key.state)}
         key={keyCol}
-        onClick={handleOnClickKey(key)}
+        onClick={handleOnClick(key)}
       >
         {key.text}
       </span>

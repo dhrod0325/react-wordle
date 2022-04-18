@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import classNames from "classnames";
 
-import { GameBoard } from "./GameBoard";
+import { WordGrid } from "./WordGrid";
 import { Keyboard } from "./Keyboard";
 import { generateRandomAnswer } from "../domain/WordGenerator";
 import { answerState } from "../recoil/atoms";
@@ -44,14 +44,14 @@ export const Wordle = () => {
     wordleAnswerCheck(e.key.toUpperCase());
   }
 
-  function handleOnClickKey(text: string) {
+  function handleOnClick(text: string) {
     wordleAnswerCheck(text);
   }
 
   return (
     <div className={classNames("gameContainer")}>
-      <GameBoard />
-      <Keyboard onClickKey={handleOnClickKey} />
+      <WordGrid />
+      <Keyboard onClick={handleOnClick} />
     </div>
   );
 };

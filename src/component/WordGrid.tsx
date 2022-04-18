@@ -3,25 +3,25 @@ import { wordsState } from "../recoil/atoms";
 import classNames from "classnames";
 import { GameColConstruct, ReactComponent } from "../@types";
 
-export const GameBoard = () => {
+export const WordGrid = () => {
   const words = useRecoilValue(wordsState);
 
-  const GameRow = ({ children }: ReactComponent) => {
+  const WordRow = ({ children }: ReactComponent) => {
     return <div className={classNames("wordRow")}>{children}</div>;
   };
 
-  const GameCol = ({ letter }: GameColConstruct) => {
+  const WordCol = ({ letter }: GameColConstruct) => {
     return <div className={classNames("wordCol", letter.checkResult)}>{letter.text}</div>;
   };
 
   return (
     <div id="gameStage">
       {words.map((word, rowIndex) => (
-        <GameRow key={rowIndex}>
+        <WordRow key={rowIndex}>
           {word.letters.map((letter, colIndex) => (
-            <GameCol key={colIndex} letter={letter} />
+            <WordCol key={colIndex} letter={letter} />
           ))}
-        </GameRow>
+        </WordRow>
       ))}
     </div>
   );

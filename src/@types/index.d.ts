@@ -11,7 +11,7 @@ export type KeyboardButtonType = {
 };
 
 export type KeyboardProps = {
-  onClickKey: (key: string) => void;
+  onClick: (key: string) => void;
 };
 
 export type GameColConstruct = { letter: Letter };
